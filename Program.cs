@@ -17,7 +17,7 @@ namespace ConsoleApp1
             // Accessing the list of Funcionarios in Empresa
             foreach (var funcionario in aDosMelhores.Funcionarios)
             {
-                Console.WriteLine($"ID: {funcionario.Id}, Nome: {funcionario.Nome},Data:{funcionario.Data_fim}");
+                funcionario.ExibirInformacoes();
             }
 
         }

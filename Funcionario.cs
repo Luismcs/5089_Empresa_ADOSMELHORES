@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -106,6 +107,19 @@ namespace ConsoleApp1
             Isencao = false; // valor default
             Bonus = false;   // valor default
             Carro = false;   // valor default
+        }
+
+        // Método para exibir informações do funcionário
+        public void ExibirInformacoes()
+        {
+            Console.WriteLine(
+                              $"ID: {Id}\nNome: {Nome}\nMorada: {Morada}\n" +
+                              $"Contacto: {Telefone}\nFim de Contrato: {dataFim}\n" +
+                              $"Registo Criminal: {dataRegisto}\nIsenção de Horário: {Isencao}\n" +
+                              $"Bónus Mensal: {Bonus}\nCarro da Empresa: {Carro}\n" +
+                              $"Reporta a: {Chefe}\nÁrea: {Area}\nDisponibilidade: {Disponibilidade}\n" +
+                              $"Valor Hora: {valorHora}"
+                              );
         }
     }
 }
