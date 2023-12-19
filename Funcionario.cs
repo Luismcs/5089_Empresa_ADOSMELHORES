@@ -121,5 +121,9 @@ namespace ConsoleApp1
                               $"Valor Hora: {valorHora}"
                               );
         }
+        public string ConverterParaTexto()
+        {
+            return $"{Id};{Nome};{Morada};{Telefone};{dataFim};{dataRegisto};{Isencao};{Bonus};{Carro};{Chefe};{Area};{Disponibilidade};{valorHora}";
+        }
     }
 }
