@@ -12,23 +12,23 @@ namespace ConsoleApp1
 
         //atributos da classe
 
-        private int id;
+        private string id;
         private string nome;
         private string morada;
         private string telefone;
-        private DateTime dataFim;
-        private DateTime dataRegisto;
-        private bool isencao;
-        private bool bonus;
-        private bool carro;
+        private string dataFim;
+        private string dataRegisto;
+        private string isencao;
+        private string bonus;
+        private string carro;
         private string chefe;
         private string area;
         private string disponibilidade;
-        private double valorHora;
+        private string valorHora;
         //public int Id { get; set; }
 
         //gets e sets
-        public int Id { 
+        public string Id { 
                         get { return id; } 
                         set {  id = value; } 
                       }
@@ -45,27 +45,27 @@ namespace ConsoleApp1
             get { return telefone; }
             set { telefone = value; }
         }
-        public DateTime Data_fim
+        public string Data_fim
         {
             get { return dataFim; }
             set { dataFim = value; }
         }
-        public DateTime Data_Registo
+        public string Data_Registo
         {
             get { return dataRegisto; }
             set { dataRegisto = value; }
         }
-        public bool Isencao
+        public string Isencao
         {
             get { return isencao; }
             set { isencao = value; }
         }
-        public bool Bonus
+        public string Bonus
         {
             get { return bonus; }
             set { bonus = value; }
         }
-        public bool Carro
+        public string Carro
         {
             get { return carro; }
             set { carro = value; }
@@ -85,41 +85,42 @@ namespace ConsoleApp1
             get { return disponibilidade; }
             set { disponibilidade = value; }
         }
-        public double Valor_Hora
+        public string Valor_Hora
         {
             get { return valorHora; }
             set { valorHora = value; }
         }
 
         //Construtor
-        public Funcionario(int id, string nome, string morada, string telefone,DateTime DataFim, DateTime DataRegisto,string Chefe, string Area, string Disponibilidade, double ValorHora)
+        public Funcionario(string id, string nome, string morada, string telefone,string DataFim, string DataRegisto,string isencao,string bonus,string carro,string Chefe, string Area, string Disponibilidade, string ValorHora)
         {
             Id = id;
             Nome = nome;
             Morada = morada;
             Telefone = telefone;
-            this.dataFim = DataFim;
-            this.dataRegisto = DataRegisto;
+            dataFim = DataFim;
+            dataRegisto = DataRegisto;
             chefe = Chefe;
             area=Area;
             disponibilidade = Disponibilidade;
             valorHora = ValorHora;
-            Isencao = false; // valor default
-            Bonus = false;   // valor default
-            Carro = false;   // valor default
+            Isencao = isencao;
+            Bonus = bonus;   
+            Carro = carro;  
         }
 
         // Método para exibir informações do funcionário
-        public void ExibirInformacoes()
+        public string  ExibirInformacoes()
         {
-            Console.WriteLine(
+            return
                               $"ID: {Id}\nNome: {Nome}\nMorada: {Morada}\n" +
                               $"Contacto: {Telefone}\nFim de Contrato: {dataFim}\n" +
                               $"Registo Criminal: {dataRegisto}\nIsenção de Horário: {Isencao}\n" +
                               $"Bónus Mensal: {Bonus}\nCarro da Empresa: {Carro}\n" +
                               $"Reporta a: {Chefe}\nÁrea: {Area}\nDisponibilidade: {Disponibilidade}\n" +
-                              $"Valor Hora: {valorHora}"
-                              );
+                              $"Valor Hora: {valorHora}";
+                              
         }
+        
     }
 }
