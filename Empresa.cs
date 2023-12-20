@@ -12,10 +12,8 @@ namespace ConsoleApp1
     internal class Empresa
     {
 
-
-
-
         List<Funcionario> funcionarios = new List<Funcionario>();
+        List<Horario> horarios = new List<Horario>();
 
 
         // Constructor
@@ -32,8 +30,8 @@ namespace ConsoleApp1
 
 
        public void LerFicheiro()
-        {
-           string id;
+       {
+            string id;
             string nome;
             string morada;
             string telefone;
@@ -57,7 +55,7 @@ namespace ConsoleApp1
                     string linha;
                     while (!sr.EndOfStream)
                     {
-                        string[] vec_fun = sr.ReadLine().Split(';');
+                        string[] vec_fun = sr.ReadLine().Split(';'); //le a linha para um vetor
                         id = vec_fun[0];
                         nome = vec_fun[1];
                         morada = vec_fun[2];
@@ -73,12 +71,7 @@ namespace ConsoleApp1
                         valorHora = vec_fun[12];
                         Funcionario funcionario = new Funcionario(id, nome, morada, telefone, dataFim, dataRegisto, isencao, bonus, carro, chefe, area, disponibilidade, valorHora); //cria um objeto funcionario
                         funcionarios.Add(funcionario); //adiciona funcionario á lista
-
-                        
-                        
-
                     }
-
                 }
 
                 // Mostrar o conteúdo na console linha por linha
@@ -94,8 +87,41 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("O arquivo 'funcionarios.txt' não foi encontrado.");
             }
-
         }
+
+        public void alocar() //seleciona o horario e escreve no ficheiro Horarios.txt o id o nome e o tipo de horário selecionado
+        {
+            string id;
+            Console.WriteLine("Introduza o id do funcionário: ");
+            id=Console.ReadLine();
+            foreach (Funcionario fun in funcionarios)
+            {
+                if(fun.Id == id)
+                {
+                    Console.WriteLine("1-Pós-Laboral: ");
+                    Console.WriteLine("2-Laboral: ");
+                    Console.WriteLine("3-Ambas: ");
+                    Console.WriteLine("Introduza o tipo de horário: ");
+                    string tipo= Console.ReadLine();
+                    string[] vec_fun = { id + fun.Nome+tipo };          //le a linha para um vetor
+                    Horario horario = new Horario(id, fun.Nome,tipo);   //cria um objeto funcionario
+                    horarios.Add(horario);                              //adiciona horario á lista
+                    string frase = fun.Id+";"+fun.Nome +";"+ tipo;
+                    FileHandler.WriteToFile(frase, @"Horarios.txt");
+
+                }
+            }
+        }
+
+        public void imprimeHorarios()
+        {
+            Console.WriteLine("Lista de Horarios:");
+            foreach (Horario line in horarios)
+            {
+                Console.WriteLine(line.ExibirInformacoes());
+            }
+        }
+
     }
 }
  
