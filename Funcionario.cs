@@ -62,6 +62,17 @@ namespace ConsoleApp1
                               $"Valor Hora: {_ValorHora}";
                               
         }
-        
+
+        public double CalcularSalario() //calcula o salário de cada funcionário //MARCOS
+        {
+            double salario = 0;
+            double valorHora = Convert.ToDouble(_ValorHora);
+            salario = (valorHora * 8)*22;
+            Console.WriteLine($"O salário do funcionário {Nome} é de {salario} euros");
+            return salario;
+
+
+        }
+
     }
 }

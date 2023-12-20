@@ -8,9 +8,9 @@ namespace ConsoleApp1
 {
     internal class FileHandler
     {
-        public static void WriteToFile(string frase, string nomeficheiro)
+        public static void WriteToFile(string frase, string nomeficheiro) //escreve sem alterar o que estava antes
         {
-            StreamWriter escrita = new StreamWriter(nomeficheiro); //cria variavel de escrita para um ficheiro
+            StreamWriter escrita = new StreamWriter(nomeficheiro,true); //cria variavel de escrita para um ficheiro sem apagar o que estava antes
             escrita.WriteLine(frase); //escrever a frase na consola
             escrita.Close(); //fecha o construtor de escrita
         }
@@ -24,6 +24,13 @@ namespace ConsoleApp1
                 WriteToFile(linha, nomeficheiroescrita); //escreve a linha no ficheiro de escrita
             }
             leitura.Close(); //fecha a variavel de leitura
+        }
+
+        public static void WriteToFileReset(string frase, string nomeficheiro) //escreve alterando o que estava antes
+        {
+            StreamWriter escrita = new StreamWriter(nomeficheiro); //cria variavel de escrita para um ficheiro sem apagar o que estava antes
+            escrita.WriteLine(frase); //escrever a frase na consola
+            escrita.Close(); //fecha o construtor de escrita
         }
     }
 }
