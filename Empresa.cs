@@ -71,8 +71,8 @@ namespace ConsoleApp1
                         area = vec_fun[10];
                         disponibilidade = vec_fun[11];
                         valorHora = vec_fun[12];
-                        Funcionario funcionario = new Funcionario(id, nome, morada, telefone, dataFim, dataRegisto, isencao, bonus, carro, chefe, area, disponibilidade, valorHora);
-                        funcionarios.Add(funcionario);
+                        Funcionario funcionario = new Funcionario(id, nome, morada, telefone, dataFim, dataRegisto, isencao, bonus, carro, chefe, area, disponibilidade, valorHora); //cria um objeto funcionario
+                        funcionarios.Add(funcionario); //adiciona funcionario á lista
 
                         
                         
