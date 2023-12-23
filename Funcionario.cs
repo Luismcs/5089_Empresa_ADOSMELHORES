@@ -11,119 +11,68 @@ namespace ConsoleApp1
     {
 
         //atributos da classe
+        public string Id { get; set; }
+        public string Nome { get; set; }
 
-        private int id;
-        private string nome;
-        private string morada;
-        private string telefone;
-        private DateTime dataFim;
-        private DateTime dataRegisto;
-        private bool isencao;
-        private bool bonus;
-        private bool carro;
-        private string chefe;
-        private string area;
-        private string disponibilidade;
-        private double valorHora;
+        public string Morada { get; set; }
+        public string Telefone { get; set; }
+        public string _DataFim { get; set; }
+        public string _DataRegisto { get; set; }
+        public string _Isencao { get; set; }
+        public string _Bonus { get; set; }
+        public string _Carro { get; set; }
+        public string _Chefe { get; set; }
+        public string _Area { get; set; }
+        public string _Disponibilidade { get; set; }
+        public string _ValorHora { get; set; }
+
+
         //public int Id { get; set; }
 
         //gets e sets
-        public int Id { 
-                        get { return id; } 
-                        set {  id = value; } 
-                      }
-        public string Nome { 
-                        get {  return nome; } 
-                        set {  nome = value; } 
-                      }
-        public string Morada {
-            get { return morada; }
-            set { morada = value; }
-        }
-        public string Telefone
-        {
-            get { return telefone; }
-            set { telefone = value; }
-        }
-        public DateTime Data_fim
-        {
-            get { return dataFim; }
-            set { dataFim = value; }
-        }
-        public DateTime Data_Registo
-        {
-            get { return dataRegisto; }
-            set { dataRegisto = value; }
-        }
-        public bool Isencao
-        {
-            get { return isencao; }
-            set { isencao = value; }
-        }
-        public bool Bonus
-        {
-            get { return bonus; }
-            set { bonus = value; }
-        }
-        public bool Carro
-        {
-            get { return carro; }
-            set { carro = value; }
-        }
-        public string Chefe
-        {
-            get { return chefe; }
-            set { chefe = value; }
-        }
-        public string Area
-        {
-            get { return area; }
-            set { area = value; }
-        }
-        public string Disponibilidade
-        {
-            get { return disponibilidade; }
-            set { disponibilidade = value; }
-        }
-        public double Valor_Hora
-        {
-            get { return valorHora; }
-            set { valorHora = value; }
-        }
+
 
         //Construtor
-        public Funcionario(int id, string nome, string morada, string telefone,DateTime DataFim, DateTime DataRegisto,string Chefe, string Area, string Disponibilidade, double ValorHora)
+        public Funcionario(string id, string nome, string morada, string telefone, string DataFim, string DataRegisto, string isencao, string bonus, string carro, string Chefe, string Area, string Disponibilidade, string ValorHora)
         {
             Id = id;
             Nome = nome;
             Morada = morada;
             Telefone = telefone;
-            this.dataFim = DataFim;
-            this.dataRegisto = DataRegisto;
-            chefe = Chefe;
-            area=Area;
-            disponibilidade = Disponibilidade;
-            valorHora = ValorHora;
-            Isencao = false; // valor default
-            Bonus = false;   // valor default
-            Carro = false;   // valor default
+            _DataFim = DataFim;
+            _DataRegisto = DataRegisto;
+            _Chefe = Chefe;
+            _Area = Area;
+            _Disponibilidade = Disponibilidade;
+            _ValorHora = ValorHora;
+            _Isencao = isencao;
+            _Bonus = bonus;
+            _Carro = carro;
         }
 
         // Método para exibir informações do funcionário
-        public void ExibirInformacoes()
+        public string ExibirInformacoes()
         {
-            Console.WriteLine(
+            return
                               $"ID: {Id}\nNome: {Nome}\nMorada: {Morada}\n" +
-                              $"Contacto: {Telefone}\nFim de Contrato: {dataFim}\n" +
-                              $"Registo Criminal: {dataRegisto}\nIsenção de Horário: {Isencao}\n" +
-                              $"Bónus Mensal: {Bonus}\nCarro da Empresa: {Carro}\n" +
-                              $"Reporta a: {Chefe}\nÁrea: {Area}\nDisponibilidade: {Disponibilidade}\n" +
-                              $"Valor Hora: {valorHora}"
-                              );
+                              $"Contacto: {Telefone}\nFim de Contrato: {_DataFim}\n" +
+                              $"Registo Criminal: {_DataRegisto}\nIsenção de Horário: {_Isencao}\n" +
+                              $"Bónus Mensal: {_Bonus}\nCarro da Empresa: {_Carro}\n" +
+                              $"Reporta a: {_Chefe}\nÁrea: {_Area}\nDisponibilidade: {_Disponibilidade}\n" +
+                              $"Valor Hora: {_ValorHora}";
+
         }
-        public string ConverterParaTexto()
+
+        public double CalcularSalario() //calcula o salário de cada funcionário //MARCOS
         {
-            return $"{Id};{Nome};{Morada};{Telefone};{dataFim};{dataRegisto};{Isencao};{Bonus};{Carro};{Chefe};{Area};{Disponibilidade};{valorHora}";
+            double salario = 0;
+            double valorHora = Convert.ToDouble(_ValorHora);
+            salario = (valorHora * 8) * 22;
+            Console.WriteLine($"O salário do funcionário {Nome} é de {salario} euros");
+            return salario;
+
+
         }
+
     }
 }
